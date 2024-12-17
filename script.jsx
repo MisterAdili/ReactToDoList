@@ -39,11 +39,6 @@ class ToDoList extends React.Component {
     this.toggleFilter = this.toggleFilter.bind(this);
   }
 
-  toggleFilter(e) {
-    console.log(e.target.name)
-    this.setState({filter: e.target.name})
-  }
-
   componentDidMount() {
     this.fetchTasks();
   }
@@ -130,11 +125,15 @@ class ToDoList extends React.Component {
       this.setState({error:error.message});
       console.log(error);
     })
+  }
 
+  toggleFilter(e) {
+    console.log(e.target.name)
+    this.setState({filter: e.target.name})
   }
 
   render(){
-    const {new_task, tasks} = this.state;
+    const {new_task, tasks, filter} = this.state;
 
     return (
       <div className="container">
