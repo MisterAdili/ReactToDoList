@@ -51,7 +51,7 @@ class ToDoList extends React.Component {
   }
 
   fetchTasks() {
-    fetch("https://fewd-todolist-api.onrender.com/tasks?api_key=1254")
+    fetch(`https://fewd-todolist-api.onrender.com/tasks?api_key=1254`)
     .then(checkStatus)
     .then(json)
     .then((response) => {
@@ -75,7 +75,7 @@ class ToDoList extends React.Component {
       return;
     }
 
-    fetch("https://fewd-todolist-api.onrender.com/tasks?api_key=1254", {
+    fetch(`https://fewd-todolist-api.onrender.com/tasks?api_key=1254`, {
       method: "POST",
       mode: "cors",
       headers: { "Content-Type": "application/json" },
@@ -101,7 +101,7 @@ class ToDoList extends React.Component {
       return;
     }
 
-    fetch('https://fewd-todolist-api.onrender.com/tasks/${id}?api_key=1254', {
+    fetch(`https://fewd-todolist-api.onrender.com/tasks/${id}?api_key=1254`, {
       method: "DELETE",
       mode: "cors",
     }).then(checkStatus)
@@ -120,7 +120,7 @@ class ToDoList extends React.Component {
       return;
     }
     const newState = completed ? 'active' : 'complete';
-    fetch('https://fewd-todolist-api.onrender.com/tasks/${id}/mark_${newState}?api_key=1254', {
+    fetch(`https://fewd-todolist-api.onrender.com/tasks/${id}/mark_${newState}?api_key=1254`, {
       method: "PUT",
       mode: "cors",
     }).then(checkStatus)
@@ -136,7 +136,9 @@ class ToDoList extends React.Component {
 
   toggleFilter(e) {
     console.log(e.target.name)
-    this.setState({filter: e.target.name})
+    this.setState({
+      filter: e.target.name
+    })
   }
 
   render(){
@@ -156,15 +158,15 @@ class ToDoList extends React.Component {
                 return task.completed;
               }
             }).map((task) => {
-              return (<Task
-                key={task.id}
-                task={task}
-                onDelete={this.deleteTask}
-                onComplete={this.toggleComplete}
+              return (
+                <Task
+                  key={task.id}
+                  task={task}
+                  onDelete={this.deleteTask}
+                  onComplete={this.toggleComplete}
                 />
               );
             }) : <p>no tasks here</p>}
-            
             <div className="mt-3">
               <label>
                 <input type="checkbox" name="all" checked={filter === "all"} onChange={this.toggleFilter} /> all
@@ -176,7 +178,6 @@ class ToDoList extends React.Component {
                 <input type="checkbox" name="completed" checked={filter === "completed"} onChange={this.toggleFilter} /> completed
               </label>
             </div>
-
             <form onSubmit={this.handleSubmit} className="form-inline my-4">
               <input
                 type="text"
