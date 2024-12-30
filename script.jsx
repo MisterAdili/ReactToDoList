@@ -15,8 +15,15 @@ class Task extends React.Component {
     return(
       <div className="row mb-1">
         <p className="col">{content}</p>
-        <button onClick={() => onDelete(id)}>Delete</button>
-        <input className="d-inline-block-mt-2" type="checkbox" onChange={() => onComplete(id, completed)} checked={completed} />
+        <button 
+          onClick={() => onDelete(id)}
+          >Delete</button>
+        <input 
+          className="d-inline-block-mt-2" 
+          type="checkbox" 
+          onChange={() => onComplete(id, completed)} 
+          checked={completed} 
+        />
       </div>
     )
   }
@@ -94,7 +101,7 @@ class ToDoList extends React.Component {
       return;
     }
 
-    fetch('https://fewd-todolist-api.onrender.com/tasks/:${id}?api_key=1254', {
+    fetch('https://fewd-todolist-api.onrender.com/tasks/${id}?api_key=1254', {
       method: "DELETE",
       mode: "cors",
     }).then(checkStatus)
@@ -113,7 +120,7 @@ class ToDoList extends React.Component {
       return;
     }
     const newState = completed ? 'active' : 'complete';
-    fetch('https://fewd-todolist-api.onrender.com/tasks/:${id}/mark_${newState}?api_key=1254', {
+    fetch('https://fewd-todolist-api.onrender.com/tasks/${id}/mark_${newState}?api_key=1254', {
       method: "PUT",
       mode: "cors",
     }).then(checkStatus)
