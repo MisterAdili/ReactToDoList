@@ -51,7 +51,7 @@ class ToDoList extends React.Component {
   }
 
   fetchTasks() {
-    fetch(`https://fewd-todolist-api.onrender.com/tasks?api_key=1254`)
+    fetch("https://fewd-todolist-api.onrender.com/tasks?api_key=1254")
     .then(checkStatus)
     .then(json)
     .then((response) => {
@@ -75,7 +75,7 @@ class ToDoList extends React.Component {
       return;
     }
 
-    fetch(`https://fewd-todolist-api.onrender.com/tasks?api_key=1254`, {
+    fetch("https://fewd-todolist-api.onrender.com/tasks?api_key=1254", {
       method: "POST",
       mode: "cors",
       headers: { "Content-Type": "application/json" },
@@ -100,7 +100,6 @@ class ToDoList extends React.Component {
     if (!id) {
       return;
     }
-
     fetch(`https://fewd-todolist-api.onrender.com/tasks/${id}?api_key=1254`, {
       method: "DELETE",
       mode: "cors",
@@ -120,6 +119,7 @@ class ToDoList extends React.Component {
       return;
     }
     const newState = completed ? 'active' : 'complete';
+
     fetch(`https://fewd-todolist-api.onrender.com/tasks/${id}/mark_${newState}?api_key=1254`, {
       method: "PUT",
       mode: "cors",
