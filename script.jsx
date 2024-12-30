@@ -10,8 +10,8 @@ const json = (response) => response.json()
 
 class Task extends React.Component {
   render () {
-    const { task, onDelete, onComplete } = this.props;
-    const { id, content, completed } = task;
+    const { task, onDelete, onComplete, } = this.props;
+    const { id, content, completed, } = task;
     return(
       <div className="row mb-1">
         <p className="col">{content}</p>
