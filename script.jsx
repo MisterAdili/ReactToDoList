@@ -1,5 +1,6 @@
 const checkStatus = (response) => {
   if (response.ok) {
+
     return response;
   }
   throw new Error('Request was either a 404 or 500');
@@ -11,7 +12,6 @@ class Task extends React.Component {
   render () {
     const { task, onDelete, onComplete } = this.props;
     const { id, content, completed } = task;
-
     return(
       <div className="row mb-1">
         <p className="col">{content}</p>
